@@ -69,8 +69,21 @@ $(document).ready(() => {
   });
 
   function displayMarkersOnMap() {
-    $.get("/api/showmarkers", function(response) {
+    $.get("/api/showmarkers", response => {
       console.log(response);
+
+      response.forEach(marker => {
+        const myLatLng = {
+          lat: parseFloat(marker.markerLatitude),
+          lng: parseFloat(marker.markerLongitude)
+        };
+        const newMarker = new google.maps.Marker({
+          position: myLatLng,
+          /* animation:google.maps.Animation.BOUNCE, */
+          map: map,
+          title: marker.markerName
+        });
+      });
     });
   }
 
