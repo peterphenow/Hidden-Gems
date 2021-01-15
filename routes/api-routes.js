@@ -51,7 +51,12 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/api/")
+  app.get("/api/showmarkers", (req, res) => {
+    db.Marker.findAll({}).then((markers) => {
+      console.log(markers);
+      res.json(markers);
+    });
+  });
   app.post("/api/addmarker", (req, res) => {
     db.Marker.create({
       markerName: req.body.markerName,
