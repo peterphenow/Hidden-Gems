@@ -53,7 +53,6 @@ module.exports = function(app) {
 
   app.get("/api/showmarkers", (req, res) => {
     db.Marker.findAll({}).then((markers) => {
-      console.log(markers);
       res.json(markers);
     });
   });

@@ -12,6 +12,7 @@ $(document).ready(() => {
   }
 
   initMap();
+  displayMarkersOnMap();
 
   // need to cycle through our maps database and place those markers on the map
 
@@ -30,7 +31,7 @@ $(document).ready(() => {
     newMarkerLatitude = location.lat();
 
     newMarkerLongitude = location.lng();
-    console.log({newMarkerLatitude}, {newMarkerLongitude});
+    console.log({ newMarkerLatitude }, { newMarkerLongitude });
     marker.addListener("click", (event) => {
       // when you click an existing marker it will display the info in the marker info window
       console.log("hi");
@@ -66,6 +67,12 @@ $(document).ready(() => {
     /* emailInput.val("");
     passwordInput.val(""); */
   });
+
+  function displayMarkersOnMap() {
+    $.get("/api/showmarkers", function(response) {
+      console.log(response);
+    });
+  }
 
   function addNewMarker(name, lat, lng, info) {
     $("#myPopup").css("visibility", "hidden");
