@@ -64,7 +64,7 @@ module.exports = function(app) {
       markerInfo: req.body.markerInfo,
     })
       .then(() => {
-        console.log(`it works!`);
+        console.log("it works!");
       })
       .catch((err) => {
         res.status(401).json(err);
