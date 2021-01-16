@@ -23,7 +23,7 @@ $(document).ready(() => {
   function placeMarker(map, location) {
     const popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
-    const marker = new google.maps.Marker({
+    const newMarker = new google.maps.Marker({
       position: location,
       /* animation:google.maps.Animation.BOUNCE, */
       map: map,
@@ -32,16 +32,6 @@ $(document).ready(() => {
 
     newMarkerLongitude = location.lng();
     console.log({ newMarkerLatitude }, { newMarkerLongitude });
-    marker.addListener("click", (event) => {
-      // when you click an existing marker it will display the info in the marker info window
-      console.log("hi");
-
-      /*  const infowindow = new google.maps.InfoWindow({
-      content:
-        "Latitude: " + location.lat() + "<br>Longitude: " + location.lng()
-    }); */
-      /* infowindow.open(map, marker); */
-    });
   }
 
   $("#subby").on("click", () => {
@@ -69,25 +59,32 @@ $(document).ready(() => {
   });
 
   function displayMarkersOnMap() {
-    $.get("/api/showmarkers", response => {
+    $.get("/api/showmarkers", (response) => {
       console.log(response);
 
-      response.forEach(marker => {
+      response.forEach((marker) => {
         const myLatLng = {
           lat: parseFloat(marker.markerLatitude),
-          lng: parseFloat(marker.markerLongitude)
+          lng: parseFloat(marker.markerLongitude),
         };
         const newMarker = new google.maps.Marker({
           position: myLatLng,
           /* animation:google.maps.Animation.BOUNCE, */
           map: map,
-          title: marker.markerName
+          title: marker.markerName,
+        });
+        newMarker.addListener("click", () => {
+          map.setZoom(15);
+          map.setCenter(newMarker.getPosition());
+          console.log(this);
+          
         });
       });
     });
   }
 
   function addNewMarker(name, lat, lng, info) {
+    // close the add marker window
     $("#myPopup").css("visibility", "hidden");
     $.post("/api/addmarker", {
       markerName: name,
@@ -97,11 +94,7 @@ $(document).ready(() => {
     })
       .then(() => {
         // show data in info window
-        console.log(newMarkerName);
-        console.log(newMarkerLocation);
-        console.log(newMarkerCreatedAt);
-        console.log(newMarkerInfo);
-        // close the add marker window
+        console.log("done");
       })
       // If there's an error, handle it by throwing up a bootstrap alert
       .catch((err) => console.log(err));
