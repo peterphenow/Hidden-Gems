@@ -52,7 +52,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/showmarkers", (req, res) => {
-    db.Marker.findAll({}).then((markers) => {
+    db.Marker.findAll({}).then(markers => {
       res.json(markers);
     });
   });
@@ -66,7 +66,7 @@ module.exports = function(app) {
       .then(() => {
         console.log("it works!");
       })
-      .catch((err) => {
+      .catch(err => {
         res.status(401).json(err);
       });
   });
