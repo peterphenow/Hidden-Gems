@@ -1,14 +1,9 @@
-<<<<<<< HEAD
-form.signup,
-form.login {
-=======
 @tailwind base;
 @tailwind componets;
 @tailwind utilities;
 
-
-form.signup, form.login {
->>>>>>> 69328c33b9d8e4b8f29f67ac5b981ef187491f0a
+form.signup,
+form.login {
   margin-top: 50px;
 }
 
