@@ -1,9 +1,14 @@
+<<<<<<< HEAD
+form.signup,
+form.login {
+=======
 @tailwind base;
 @tailwind componets;
 @tailwind utilities;
 
 
 form.signup, form.login {
+>>>>>>> 69328c33b9d8e4b8f29f67ac5b981ef187491f0a
   margin-top: 50px;
 }
 
@@ -27,8 +32,7 @@ form.signup, form.login {
   width: 100%;
 }
 
-.form-control{
-  
+.form-control {
 }
 
 #splash-title {
@@ -43,7 +47,8 @@ form.signup, form.login {
   padding: 25px;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -112,7 +117,6 @@ div[class^="d"] {
 /* Popup arrow */
 
 .popup .popuptext::after {
-  
   position: absolute;
 }
 
@@ -121,10 +125,25 @@ div[class^="d"] {
 .popup .show {
   visibility: visible;
   -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s
+  animation: fadeIn 1s;
 }
-.form-control{
+.form-control {
   width: 50%;
+}
+
+/* Popup Close button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /* Add animation (fade in the popup) */
