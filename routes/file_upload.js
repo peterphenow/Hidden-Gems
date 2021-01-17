@@ -21,7 +21,20 @@ module.exports = function(app) {
     upload.single("file" /* name attribute of <file> element in your form */),
     (req, res) => {
       const tempPath = req.file.path;
-      const targetPath = path.join(__dirname, "../uploads/image.png");
+
+      // make sure user's upload directory exists
+
+      const userDir = "../uploads/" + req.user.email + "/unprocessed";
+      console.log("value of userDir: " + userDir);
+
+      if (!fs.existsSync(userDir)) {
+        fs.mkdirSync(userDir);
+      }
+
+      const targetPath = path.join(
+        __dirname,
+        "../uploads/" + req.user.email + "/image.png"
+      );
 
       if (path.extname(req.file.originalname).toLowerCase() === ".png") {
         fs.rename(tempPath, targetPath, (err) => {
