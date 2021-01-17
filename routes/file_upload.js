@@ -24,8 +24,7 @@ module.exports = function(app) {
 
       // make sure user's upload directory exists
 
-      const userDir = "../uploads/" + req.user.email + "/unprocessed";
-      console.log("value of userDir: " + userDir);
+      const userDir = "../uploads/" + req.user.email;
 
       if (!fs.existsSync(userDir)) {
         fs.mkdirSync(userDir);
@@ -40,10 +39,10 @@ module.exports = function(app) {
         fs.rename(tempPath, targetPath, (err) => {
           if (err) return handleError(err, res);
 
-          res
-            .status(200)
+          res.end();
+          /*
             .contentType("text/plain")
-            .end("File uploaded!");
+            .end("File uploaded!") */
         });
       } else {
         fs.unlink(tempPath, (err) => {

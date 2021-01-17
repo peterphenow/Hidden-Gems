@@ -89,6 +89,23 @@
               <div class="row justify-content-start mt-4">
                 <div class="col">
                   <div class="form-check"></div>
+                  <!--            method="post"
+                    enctype="multipart/form-data" -->
+                  <form
+                    id="fileUploadForm"
+                    method="POST"
+                    enctype="multipart/form-data"
+                    
+                  >
+                    <input type="file" name="file" id="file" />
+                    <input
+                      id="file-upload"
+                      type="submit"
+                      value="Submit"
+                      class="btn-primary"
+                    />
+                    <span id="result">Progress?</label>
+                  </form>
 
                   <button id="subby" class="btn btn-primary mt-4">
                     Submit
@@ -109,10 +126,7 @@
       <h3>Marker Created at:</h3>
       <h3>Marker Information:</h3>
     </div>
-    <form method="post" enctype="multipart/form-data" action="/upload">
-      <input type="file" name="file" />
-      <input type="submit" value="Submit" />
-    </form>
+
     <script src="./js/map.js"></script>
   </body>
 </html>
