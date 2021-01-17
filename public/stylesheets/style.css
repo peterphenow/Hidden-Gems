@@ -2,8 +2,7 @@
 @tailwind componets;
 @tailwind utilities;
 
-form.signup,
-form.login {
+form.signup, form.login {
   margin-top: 50px;
 }
 
