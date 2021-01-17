@@ -139,4 +139,5 @@ $(document).ready(() => {
 $("#close").on("click", () => {
   const popup = document.getElementById("myPopup");
   popup.classList.remove("show");
+  location.reload();
 });
