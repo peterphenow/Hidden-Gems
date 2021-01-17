@@ -1,116 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Passport Authentication</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css"
+    />
+    <link href="stylesheets/style.css" rel="stylesheet" />
+  </head>
 
-<head>
-  <title>Passport Authentication</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-  <link href="stylesheets/style.css" rel="stylesheet">
-</head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/logout">
+            <span id="logout-span">Logout</span>
+          </a>
+        </div>
 
-<body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/logout">
-          <span id="logout-span">Logout</span>
-        </a>
-
+        <div id="splash-title">
+          <span id="splash-title-span">
+            Hidden Gems
+          </span>
+        </div>
       </div>
-
-      <div id="splash-title">
-        <span id="splash-title-span">
-          Hidden Gems
-        </span>
+      <div id="member-name-div">
+        <h4>Welcome <span class="member-name"></span></h4>
       </div>
+    </nav>
+    <div class="container">
+      <div class="row"></div>
     </div>
-    <div id="member-name-div">
-      <h4>Welcome <span class="member-name"></span></h4>
-    </div>
-  </nav>
-  <div class="container">
-    <div class="row">
 
-    </div>
-  </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/members.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/members.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdWg9RZgxC8pHhl-IMl003UaO2n2dAWmM&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
 
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdWg9RZgxC8pHhl-IMl003UaO2n2dAWmM&callback=initMap&libraries=&v=weekly"
-    defer></script>
-
-  <div class="popup">
-    <span class="popuptext" id="myPopup">Add a Marker
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-12 col-md-8 col-lg-8 col-xl-6">
-
-            <div class="row align-items-center">
-              <div class="col mt-4">
-                <input type="text" class="form-control" placeholder="Marker Name"
-                id="marker-name">
-              </div>
-            </div>
-            <div class="row align-items-center mt-4">
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Marker Location"
-                id="marker-location">
-              </div>
-            </div>
-            <div class="row align-items-center mt-4">
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Created At"
-                id="marker-created">
-              </div>
-              <div class="col">
-                <input type="textarea" class="form-control" placeholder="Information"
-                id="marker-info">
-              </div>
-            </div>
-            <div class="row justify-content-start mt-4">
-              <div class="col">
-                <div class="form-check">
-
+    <div class="popup">
+      <span class="popuptext" id="myPopup"
+        >Add a Marker
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+              <div class="row align-items-center">
+                <div class="col mt-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Marker Name"
+                    id="marker-name"
+                  />
                 </div>
+              </div>
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Marker Location"
+                    id="marker-location"
+                  />
+                </div>
+              </div>
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Created At"
+                    id="marker-created"
+                  />
+                </div>
+                <div class="col">
+                  <input
+                    type="textarea"
+                    class="form-control"
+                    placeholder="Information"
+                    id="marker-info"
+                  />
+                </div>
+              </div>
+              <div class="row justify-content-start mt-4">
+                <div class="col">
+                  <div class="form-check"></div>
 
-                <button id="subby" class="btn btn-primary mt-4">Submit</button>
+                  <button id="subby" class="btn btn-primary mt-4">
+                    Submit
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </span>
+    </div>
+    <div id="map"></div>
+    <div id="infoBox">
+      <h2>Marker Info</h2>
 
-    </span>
-
-
-
-  </div>
-  <div id="map"></div>
-  <div id="infoBox">
-    <h2>Marker Info</h2>
-
-    <h3>Marker Name: </h3>
-    <h3>Marker Location: </h3>
-    <h3>Marker Created at: </h3>
-    <h3>Marker Information: </h3>
-
-
-
-  </div>
-
-  <script src="./js/map.js"></script>
-
-
-
-
-
-
-
-
-
-</body>
-
+      <h3>Marker Name:</h3>
+      <h3>Marker Location:</h3>
+      <h3>Marker Created at:</h3>
+      <h3>Marker Information:</h3>
+    </div>
+    <form method="post" enctype="multipart/form-data" action="/upload">
+      <input type="file" name="file" />
+      <input type="submit" value="Submit" />
+    </form>
+    <script src="./js/map.js"></script>
+  </body>
 </html>
