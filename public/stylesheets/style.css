@@ -2,9 +2,12 @@
 @tailwind componets;
 @tailwind utilities;
 
-form.signup,
-form.login {
+
+form.signup, form.login {
+
   margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #map {
@@ -18,13 +21,18 @@ form.login {
   height: 75%;
   width: 25%;
   border: 2px solid cornflowerblue;
-  background-color: white;
+  background-color: rgb(204, 159, 220);
   border-radius: 5px;
 }
 
 #bottom-bar {
   background-color: cornflowerblue;
   width: 100%;
+}
+
+
+.form-control {
+  background-color: rgb(244, 248, 247);
 }
 
 #splash-title {
