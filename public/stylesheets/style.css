@@ -159,3 +159,7 @@ div[class^="d"] {
     opacity: 1;
   }
 }
+
+.navbar, .navbar-default{
+  background-image: url("img/backgroundImage.jpg");
+}
