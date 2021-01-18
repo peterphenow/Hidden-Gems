@@ -16,7 +16,7 @@ $(document).ready(() => {
 
   // need to cycle through our maps database and place those markers on the map
 
-  google.maps.event.addListener(map, "click", event => {
+  google.maps.event.addListener(map, "click", (event) => {
     placeMarker(map, event.latLng);
   });
 
@@ -67,22 +67,17 @@ $(document).ready(() => {
       markerInfo: newMarkerInfo.trim(),
     };
 
-    addNewMarker(
-      markerData.markerName,
-      markerData.markerLatitude,
-      markerData.markerLongitude,
-      markerData.markerInfo
-    );
+    addNewMarker(markerData.markerName, markerData.markerLatitude, markerData.markerLongitude, markerData.markerInfo);
 
     /* emailInput.val("");
     passwordInput.val(""); */
   });
 
   function displayMarkersOnMap() {
-    $.get("/api/showmarkers", response => {
+    $.get("/api/showmarkers", (response) => {
       console.log(response);
 
-      response.forEach(marker => {
+      response.forEach((marker) => {
         const myLatLng = {
           lat: parseFloat(marker.markerLatitude),
           lng: parseFloat(marker.markerLongitude),
@@ -127,18 +122,25 @@ $(document).ready(() => {
       markerName: name,
       markerLatitude: lat,
       markerLongitude: lng,
-      markerInfo: info
+      markerInfo: info,
     })
       .then(() => {
         // show data in info window
         console.log("done");
       })
       // If there's an error, handle it by throwing up a bootstrap alert
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }
 
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
 
   // display new marker information
+});
+
+// closes the popup window
+$("#close").on("click", () => {
+  const popup = document.getElementById("myPopup");
+  popup.classList.remove("show");
+  location.reload();
 });

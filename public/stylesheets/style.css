@@ -4,7 +4,10 @@
 
 
 form.signup, form.login {
+
   margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #map {
@@ -18,7 +21,7 @@ form.signup, form.login {
   height: 75%;
   width: 25%;
   border: 2px solid cornflowerblue;
-  background-color: white;
+  background-color: rgb(204, 159, 220);
   border-radius: 5px;
 }
 
@@ -27,8 +30,9 @@ form.signup, form.login {
   width: 100%;
 }
 
-.form-control{
-  
+
+.form-control {
+  background-color: rgb(244, 248, 247);
 }
 
 #splash-title {
@@ -43,7 +47,8 @@ form.signup, form.login {
   padding: 25px;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -94,11 +99,12 @@ div[class^="d"] {
   background-color: grey;
   color: #fff;
   text-align: center;
-  padding: 8px 0;
+  padding-left: 10px;
+  padding-top: 10px;
   position: absolute;
   z-index: 1;
   border: 4px solid cornflowerblue;
-  border-radius: 5px;
+  border-radius: 10px;
   left: 500px;
 }
 
@@ -112,7 +118,6 @@ div[class^="d"] {
 /* Popup arrow */
 
 .popup .popuptext::after {
-  
   position: absolute;
 }
 
@@ -121,10 +126,35 @@ div[class^="d"] {
 .popup .show {
   visibility: visible;
   -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s
+  animation: fadeIn 1s;
 }
-.form-control{
+.form-control {
   width: 50%;
+  border-radius: 10px;
+  margin-bottom: 2px;
+}
+
+/* Popup Close button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  padding-right: 15px;
+  padding-bottom: 5px;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Submit button on popup  */
+#subby {
+  transform: translate(-50%);
+  border-radius: 10px;
 }
 
 /* Add animation (fade in the popup) */
@@ -145,4 +175,8 @@ div[class^="d"] {
   to {
     opacity: 1;
   }
+}
+
+.navbar, .navbar-default{
+  background-image: url("img/backgroundImage.jpg");
 }
