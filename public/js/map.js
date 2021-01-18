@@ -93,6 +93,7 @@ $(document).ready(() => {
           map: map,
           title: marker.markerName,
           customInfo: [myLatLng, marker.markerInfo],
+          
         });
         newMarker.addListener("click", () => {
           map.setZoom(15);

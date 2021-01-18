@@ -24,8 +24,9 @@ module.exports = function(app) {
 
       // make sure user's upload directory exists
 
-      const userDir = "../uploads/" + req.user.email;
-
+      const userDir = "./uploads/" + req.user.email;
+      console.log( userDir );
+      
       if (!fs.existsSync(userDir)) {
         fs.mkdirSync(userDir);
       }

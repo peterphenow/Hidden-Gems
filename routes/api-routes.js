@@ -82,8 +82,12 @@ module.exports = function(app) {
               if (err) console.log("ERROR: " + err);
             }
           );
-          // move the file to a processed location
-          // write the URL to the database
+          db.Marker.update(
+            { markerPics: "./uploads/" + req.user.email + "/" + newFileName },
+            { where: { id: data.dataValues.id } }
+          ).then((rowsUpdated) => {
+            console.log(rowsUpdated);
+          });
         } else {
           console.log("no picture file found!");
         }
@@ -98,14 +102,12 @@ module.exports = function(app) {
     const finalArray = [];
     const randomCharsArray = "abcdefghijklmnopqrstuvwxyz123456790".split("");
     for (let index = 1; index < 9; index++) {
-      const randomNumber = Math.floor(
-        Math.random() * randomCharsArray.length + 1
-      );
+      const randomNumber = Math.floor(Math.random() * randomCharsArray.length);
       finalArray.push(randomCharsArray[randomNumber]);
     }
     console.log(finalArray);
 
-    const newFileName = id + " " + "IMG" + finalArray.join("") + ".png";
+    const newFileName = id + " " + "IMG " + finalArray.join("") + ".png";
     console.log(newFileName);
     return newFileName;
   }
