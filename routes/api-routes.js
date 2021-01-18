@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const fs = require("fs");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -52,7 +53,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/showmarkers", (req, res) => {
-    db.Marker.findAll({}).then(markers => {
+    db.Marker.findAll({}).then((markers) => {
       res.json(markers);
     });
   });
@@ -63,10 +64,23 @@ module.exports = function(app) {
       markerLongitude: req.body.markerLongitude,
       markerInfo: req.body.markerInfo,
     })
-      .then(() => {
-        console.log("it works!");
+      .then((data) => {
+        console.log("marker successfully created.");
+        console.log("checking for image upload...")
+        const userDir = "uploads/" + req.user.email + "/temp-image.png";
+
+        if (fs.existsSync(userDir)) {
+          console.log("uploaded picture found!");
+          // rename the file
+          // move the file to a processed location
+          // write the URL to the database
+          
+          
+        } else {
+          console.log('no picture file found!');
+        }
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(401).json(err);
       });
   });

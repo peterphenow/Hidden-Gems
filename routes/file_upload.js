@@ -32,7 +32,7 @@ module.exports = function(app) {
 
       const targetPath = path.join(
         __dirname,
-        "../uploads/" + req.user.email + "/image.png"
+        "../uploads/" + req.user.email + "/temp-image.png"
       );
 
       if (path.extname(req.file.originalname).toLowerCase() === ".png") {

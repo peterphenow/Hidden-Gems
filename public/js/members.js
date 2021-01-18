@@ -19,14 +19,14 @@ $(document).ready(() => {
       url: "/upload",
 
       success: function(data) {
-        $("#result").text("file uploaded.");
+        $("#result").text("picture uploaded.");
         console.log("SUCCESS : ", data);
         $("#file-upload").prop("disabled", false);
       },
       error: function(e) {
-        $("#result").text(e.responseText);
+        $("#result").text("ERROR: PNG files only!");
         console.log("ERROR : ", e);
-        $("#btnSubmit").prop("disabled", false);
+        $("#file-upload").prop("disabled", false);
       }
     });
   });
