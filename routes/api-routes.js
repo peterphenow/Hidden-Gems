@@ -66,22 +66,47 @@ module.exports = function(app) {
     })
       .then((data) => {
         console.log("marker successfully created.");
-        console.log("checking for image upload...")
-        const userDir = "uploads/" + req.user.email + "/temp-image.png";
+        console.log("checking for image upload...");
+        console.log(data);
+        const userDirTempFile = "uploads/" + req.user.email + "/temp-image.png";
 
-        if (fs.existsSync(userDir)) {
+        if (fs.existsSync(userDirTempFile)) {
           console.log("uploaded picture found!");
-          // rename the file
+          // create file name with ID + IMG + 8 random chars
+          const newFileName = getNewFileName(data.dataValues.id);
+          // rename the file from userDir to newFileName
+          fs.rename(
+            userDirTempFile,
+            "./uploads/" + req.user.email + "/" + newFileName,
+            function(err) {
+              if (err) console.log("ERROR: " + err);
+            }
+          );
           // move the file to a processed location
           // write the URL to the database
-          
-          
         } else {
-          console.log('no picture file found!');
+          console.log("no picture file found!");
         }
       })
       .catch((err) => {
         res.status(401).json(err);
       });
   });
+
+  function getNewFileName(id) {
+    // select 8 characters at random from an array
+    const finalArray = [];
+    const randomCharsArray = "abcdefghijklmnopqrstuvwxyz123456790".split("");
+    for (let index = 1; index < 9; index++) {
+      const randomNumber = Math.floor(
+        Math.random() * randomCharsArray.length + 1
+      );
+      finalArray.push(randomCharsArray[randomNumber]);
+    }
+    console.log(finalArray);
+
+    const newFileName = id + " " + "IMG" + finalArray.join("") + ".png";
+    console.log(newFileName);
+    return newFileName;
+  }
 };

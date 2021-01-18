@@ -21,7 +21,7 @@ $(document).ready(() => {
       success: function(data) {
         $("#result").text("picture uploaded.");
         console.log("SUCCESS : ", data);
-        $("#file-upload").prop("disabled", false);
+        /* $("#file-upload").prop("disabled", false); */
       },
       error: function(e) {
         $("#result").text("ERROR: PNG files only!");
