@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const fs = require("fs");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -52,7 +53,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/showmarkers", (req, res) => {
-    db.Marker.findAll({}).then(markers => {
+    db.Marker.findAll({}).then((markers) => {
       res.json(markers);
     });
   });
@@ -63,11 +64,51 @@ module.exports = function(app) {
       markerLongitude: req.body.markerLongitude,
       markerInfo: req.body.markerInfo,
     })
-      .then(() => {
-        console.log("it works!");
+      .then((data) => {
+        console.log("marker successfully created.");
+        console.log("checking for image upload...");
+        console.log(data);
+        const userDirTempFile = "public/uploads/" + req.user.email + "/temp-image.png";
+
+        if (fs.existsSync(userDirTempFile)) {
+          console.log("uploaded picture found!");
+          // create file name with ID + IMG + 8 random chars
+          const newFileName = getNewFileName(data.dataValues.id);
+          // rename the file from userDir to newFileName
+          fs.rename(
+            userDirTempFile,
+            "./public/uploads/" + req.user.email + "/" + newFileName,
+            function(err) {
+              if (err) console.log("ERROR: " + err);
+            }
+          );
+          db.Marker.update(
+            { markerPics: "uploads/" + req.user.email + "/" + newFileName },
+            { where: { id: data.dataValues.id } }
+          ).then((rowsUpdated) => {
+            console.log(rowsUpdated);
+          });
+        } else {
+          console.log("no picture file found!");
+        }
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(401).json(err);
       });
   });
+
+  function getNewFileName(id) {
+    // select 8 characters at random from an array
+    const finalArray = [];
+    const randomCharsArray = "abcdefghijklmnopqrstuvwxyz123456790".split("");
+    for (let index = 1; index < 9; index++) {
+      const randomNumber = Math.floor(Math.random() * randomCharsArray.length);
+      finalArray.push(randomCharsArray[randomNumber]);
+    }
+    console.log(finalArray);
+
+    const newFileName = id + "IMG" + finalArray.join("") + ".png";
+    console.log(newFileName);
+    return newFileName;
+  }
 };

@@ -88,12 +88,14 @@ $(document).ready(() => {
           map: map,
           title: marker.markerName,
           customInfo: [myLatLng, marker.markerInfo],
+          
         });
         newMarker.addListener("click", () => {
           map.setZoom(15);
           map.setCenter(newMarker.getPosition());
           console.log(newMarker.title);
           console.log(newMarker.customInfo);
+          console.log(newMarker);
 
           const markerInfoStuff = `
           
@@ -102,6 +104,7 @@ $(document).ready(() => {
             <h3>Marker Location: Lat:${newMarker.customInfo[0].lat} Lng: ${newMarker.customInfo[0].lng}</h3>
             <h3>Marker Created at: </h3>
             <h3>Marker Information: ${newMarker.customInfo[1]}</h3>
+            <img src="./${marker.markerPics}" width="500" height="600">
           
         
           `;
