@@ -24,7 +24,7 @@ module.exports = function(app) {
 
       // make sure user's upload directory exists
 
-      const userDir = "./uploads/" + req.user.email;
+      const userDir = "./public/uploads/" + req.user.email;
       console.log( userDir );
       
       if (!fs.existsSync(userDir)) {
@@ -33,7 +33,7 @@ module.exports = function(app) {
 
       const targetPath = path.join(
         __dirname,
-        "../uploads/" + req.user.email + "/temp-image.png"
+        "../public/uploads/" + req.user.email + "/temp-image.png"
       );
 
       if (path.extname(req.file.originalname).toLowerCase() === ".png") {

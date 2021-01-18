@@ -68,7 +68,7 @@ module.exports = function(app) {
         console.log("marker successfully created.");
         console.log("checking for image upload...");
         console.log(data);
-        const userDirTempFile = "uploads/" + req.user.email + "/temp-image.png";
+        const userDirTempFile = "public/uploads/" + req.user.email + "/temp-image.png";
 
         if (fs.existsSync(userDirTempFile)) {
           console.log("uploaded picture found!");
@@ -77,13 +77,13 @@ module.exports = function(app) {
           // rename the file from userDir to newFileName
           fs.rename(
             userDirTempFile,
-            "./uploads/" + req.user.email + "/" + newFileName,
+            "./public/uploads/" + req.user.email + "/" + newFileName,
             function(err) {
               if (err) console.log("ERROR: " + err);
             }
           );
           db.Marker.update(
-            { markerPics: "./uploads/" + req.user.email + "/" + newFileName },
+            { markerPics: "uploads/" + req.user.email + "/" + newFileName },
             { where: { id: data.dataValues.id } }
           ).then((rowsUpdated) => {
             console.log(rowsUpdated);
@@ -107,7 +107,7 @@ module.exports = function(app) {
     }
     console.log(finalArray);
 
-    const newFileName = id + " " + "IMG " + finalArray.join("") + ".png";
+    const newFileName = id + "IMG" + finalArray.join("") + ".png";
     console.log(newFileName);
     return newFileName;
   }
