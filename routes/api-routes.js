@@ -66,7 +66,7 @@ module.exports = function(app) {
     })
       .then(data => {
         console.log("marker successfully created.");
-        console.log("checking for image upload...");
+        /* console.log("checking for image upload...");
         console.log(data);
         const userDirTempFile =
           "public/uploads/" + req.user.email + "/temp-image.png";
@@ -94,7 +94,7 @@ module.exports = function(app) {
           });
         } else {
           console.log("no picture file found!");
-        }
+        } */
       })
       .catch(err => {
         res.status(401).json(err);
