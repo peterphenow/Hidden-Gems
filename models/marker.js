@@ -3,21 +3,24 @@ module.exports = function(sequelize, DataTypes) {
   const Marker = sequelize.define("Marker", {
     markerName: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
-    // The password cannot be null
     markerLatitude: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     markerLongitude: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     markerInfo: {
       type: DataTypes.STRING,
-      allowNull: false
-    }
+      allowNull: true,
+    },
+    markerPics: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   });
 
   return Marker;
