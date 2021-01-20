@@ -11,7 +11,7 @@ module.exports = function(app) {
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       email: req.user.email,
-      id: req.user.id,
+      id: req.user.id
     });
   });
 
@@ -21,12 +21,12 @@ module.exports = function(app) {
   app.post("/api/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
-      password: req.body.password,
+      password: req.body.password
     })
       .then(() => {
         res.redirect(307, "/api/login");
       })
-      .catch((err) => {
+      .catch(err => {
         res.status(401).json(err);
       });
   });
@@ -47,13 +47,13 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id,
+        id: req.user.id
       });
     }
   });
 
   app.get("/api/showmarkers", (req, res) => {
-    db.Marker.findAll({}).then((markers) => {
+    db.Marker.findAll({}).then(markers => {
       res.json(markers);
     });
   });
@@ -62,13 +62,14 @@ module.exports = function(app) {
       markerName: req.body.markerName,
       markerLatitude: req.body.markerLatitude,
       markerLongitude: req.body.markerLongitude,
-      markerInfo: req.body.markerInfo,
+      markerInfo: req.body.markerInfo
     })
-      .then((data) => {
+      .then(data => {
         console.log("marker successfully created.");
         console.log("checking for image upload...");
         console.log(data);
-        const userDirTempFile = "public/uploads/" + req.user.email + "/temp-image.png";
+        const userDirTempFile =
+          "public/uploads/" + req.user.email + "/temp-image.png";
 
         if (fs.existsSync(userDirTempFile)) {
           console.log("uploaded picture found!");
@@ -78,21 +79,24 @@ module.exports = function(app) {
           fs.rename(
             userDirTempFile,
             "./public/uploads/" + req.user.email + "/" + newFileName,
-            function(err) {
-              if (err) console.log("ERROR: " + err);
+            err => {
+              if (err) {
+                console.log("ERROR: " + err);
+              }
             }
           );
+
           db.Marker.update(
             { markerPics: "uploads/" + req.user.email + "/" + newFileName },
             { where: { id: data.dataValues.id } }
-          ).then((rowsUpdated) => {
+          ).then(rowsUpdated => {
             console.log(rowsUpdated);
           });
         } else {
           console.log("no picture file found!");
         }
       })
-      .catch((err) => {
+      .catch(err => {
         res.status(401).json(err);
       });
   });
