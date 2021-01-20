@@ -1,7 +1,6 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
-const fs = require("fs");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -64,9 +63,9 @@ module.exports = function(app) {
       markerLongitude: req.body.markerLongitude,
       markerInfo: req.body.markerInfo
     })
-      .then(data => {
+      .then(() => {
         console.log("marker successfully created.");
-        console.log("checking for image upload...");
+        /* console.log("checking for image upload...");
         console.log(data);
         const userDirTempFile =
           "public/uploads/" + req.user.email + "/temp-image.png";
@@ -94,14 +93,14 @@ module.exports = function(app) {
           });
         } else {
           console.log("no picture file found!");
-        }
+        } */
       })
       .catch(err => {
         res.status(401).json(err);
       });
   });
 
-  function getNewFileName(id) {
+  /* function getNewFileName(id) {
     // select 8 characters at random from an array
     const finalArray = [];
     const randomCharsArray = "abcdefghijklmnopqrstuvwxyz123456790".split("");
@@ -114,5 +113,5 @@ module.exports = function(app) {
     const newFileName = id + "IMG" + finalArray.join("") + ".png";
     console.log(newFileName);
     return newFileName;
-  }
+  } */
 };

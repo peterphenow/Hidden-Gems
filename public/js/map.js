@@ -7,10 +7,17 @@ $(document).ready(() => {
 
   getLocation();
 
-  function initMap() {
+  async function initMap() {
+    console.log("initializing map...");
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: finalLatitude, lng: finalLongitude },
       zoom: 10
+    });
+    await displayMarkersOnMap();
+    console.log("x");
+    google.maps.event.addListener(map, "click", event => {
+      console.log("clicked");
+      placeMarker(map, event.latLng);
     });
   }
 
@@ -34,13 +41,7 @@ $(document).ready(() => {
     initMap();
   }
 
-  displayMarkersOnMap();
-
   // need to cycle through our maps database and place those markers on the map
-
-  google.maps.event.addListener(map, "click", event => {
-    placeMarker(map, event.latLng);
-  });
 
   function placeMarker(map, location) {
     const popup = document.getElementById("myPopup");
