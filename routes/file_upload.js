@@ -1,4 +1,3 @@
-const db = require("../models");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
@@ -12,7 +11,7 @@ module.exports = function(app) {
   };
 
   const upload = multer({
-    dest: "../uploads",
+    dest: "../uploads"
     // you might also want to set some limits: https://github.com/expressjs/multer#limits
   });
 
@@ -25,8 +24,8 @@ module.exports = function(app) {
       // make sure user's upload directory exists
 
       const userDir = "./public/uploads/" + req.user.email;
-      console.log( userDir );
-      
+      console.log(userDir);
+
       if (!fs.existsSync(userDir)) {
         fs.mkdirSync(userDir);
       }
@@ -37,8 +36,10 @@ module.exports = function(app) {
       );
 
       if (path.extname(req.file.originalname).toLowerCase() === ".png") {
-        fs.rename(tempPath, targetPath, (err) => {
-          if (err) return handleError(err, res);
+        fs.rename(tempPath, targetPath, err => {
+          if (err) {
+            return handleError(err, res);
+          }
 
           res.end();
           /*
@@ -46,8 +47,10 @@ module.exports = function(app) {
             .end("File uploaded!") */
         });
       } else {
-        fs.unlink(tempPath, (err) => {
-          if (err) return handleError(err, res);
+        fs.unlink(tempPath, err => {
+          if (err) {
+            return handleError(err, res);
+          }
 
           res
             .status(403)
