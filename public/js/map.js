@@ -2,15 +2,38 @@ $(document).ready(() => {
   let map;
   let newMarkerLatitude;
   let newMarkerLongitude;
+  let finalLatitude = 44.9778;
+  let finalLongitude = -93.265;
+
+  getLocation();
 
   function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: 44.9778, lng: -93.265 },
+      center: { lat: finalLatitude, lng: finalLongitude },
       zoom: 10
     });
   }
 
-  initMap();
+  function getLocation() {
+    console.log(navigator.geolocation);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+      console.log(navigator.geolocation.getCurrentPosition(showPosition));
+    } else {
+      finalLatitude = 44.9778;
+      finalLongitude = -93.265;
+    }
+  }
+
+  function showPosition(position) {
+    console.log(position);
+    finalLatitude = position.coords.latitude;
+    finalLongitude = position.coords.longitude;
+    console.log(finalLongitude);
+    console.log(finalLatitude);
+    initMap();
+  }
+
   displayMarkersOnMap();
 
   // need to cycle through our maps database and place those markers on the map
