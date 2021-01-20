@@ -25,8 +25,9 @@ $(document).ready(() => {
     popup.classList.toggle("show");
     const newMarker = new google.maps.Marker({
       position: location,
-      /* animation:google.maps.Animation.BOUNCE, */
-      map: map,
+      icon: "./../images/gem-solid.png",
+     /* animation:google.maps.Animation.BOUNCE, */
+      map: map
     });
     newMarkerLatitude = location.lat();
 
