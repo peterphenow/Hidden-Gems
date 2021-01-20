@@ -13,7 +13,7 @@ $(document).ready(() => {
       center: { lat: finalLatitude, lng: finalLongitude },
       zoom: 10
     });
-    const x = await displayMarkersOnMap();
+    await displayMarkersOnMap();
     console.log("x");
     google.maps.event.addListener(map, "click", event => {
       console.log("clicked");
