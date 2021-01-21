@@ -175,3 +175,5 @@ div[class^="d"] {
 .navbar, .navbar-default{
   background-image: url("img/backgroundImage.jpg");
 }
+
+/* Bootstrap settings to eliminate overlay
