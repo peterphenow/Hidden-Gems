@@ -82,7 +82,7 @@ Installation should be fairly straightforward, but here's a quick guide to get u
 
 This project is deployed on the world wide intertubes via **Heroku** at:
 
-http://INSERT_PROPER_URL.heroku.com
+https://ancient-waters-90063.herokuapp.com/
 
 
 
