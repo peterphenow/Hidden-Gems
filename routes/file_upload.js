@@ -1,3 +1,12 @@
+/**
+ * unfortunately this file is depreciated for this project.  while the picture upload
+ * functionality worked great, the way it was being executed did not conform to Heroku
+ * web server standards.  Heroku does not allow for file system writing or access.  in
+ * order to re-create this code with Heroku i would have had to integrated something
+ * like an Amazon S3 remote cloud based file system.  I decided to keep this file as
+ * a guide if needing to re-create the technology in the future in other projects.
+ */
+
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
@@ -12,7 +21,6 @@ module.exports = function(app) {
 
   const upload = multer({
     dest: "../uploads"
-    // you might also want to set some limits: https://github.com/expressjs/multer#limits
   });
 
   app.post(
@@ -42,9 +50,7 @@ module.exports = function(app) {
           }
 
           res.end();
-          /*
-            .contentType("text/plain")
-            .end("File uploaded!") */
+          /*.contentType("text/plain").end("File uploaded!") */
         });
       } else {
         fs.unlink(tempPath, err => {

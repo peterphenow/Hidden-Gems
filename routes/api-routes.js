@@ -55,8 +55,11 @@ module.exports = function(app) {
       });
     }
   });
+
+  // sends user to the facebook login screen to authenticate the user
   app.get("/auth/facebook", passport.authenticate("facebook"));
 
+  // the callback response after authentication completes from facebook
   app.get(
     "/auth/facebook/callback",
     passport.authenticate("facebook", {
@@ -70,6 +73,7 @@ module.exports = function(app) {
       res.json(markers);
     });
   });
+
   app.post("/api/addmarker", (req, res) => {
     db.Marker.create({
       markerName: req.body.markerName,
