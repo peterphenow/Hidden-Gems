@@ -7,16 +7,24 @@ passport.use(
     {
       clientID: "411866476566106",
       clientSecret: "f4a590e702fd960148f7eb3aa022bd8c",
-      callbackURL: "http://localhost:8080/auth/facebook/callback",
+      callbackURL: "http://localhost:8080/auth/facebook/callback"
     },
-    function(accessToken, refreshToken, profile, done) {
-      db.User.findOrCreate(..., function(err, user) {
-          if (err) {
-            return done(err);
-          }
-          done(null, user);
-        }
-      );
+    (accessToken, refreshToken, profile, done) => {
+      db.User.findOrCreate({
+        where: { email: profile.id + "@facebook.com" },
+        defaults: { password: profile.id + "@facebook.com" }
+      }).spread((user, created) => {
+        console.log("profile returned by fb: " + profile);
+        console.log(
+          user.get({
+            plain: true
+          })
+        );
+        console.log("profile returned by fb: " + profile);
+        console.log(created);
+
+        done(null, user);
+      });
     }
   )
 );
