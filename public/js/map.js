@@ -116,6 +116,7 @@ $(document).ready(() => {
         };
         const newMarker = new google.maps.Marker({
           position: myLatLng,
+          icon: "./../images/gem-solid.png",
           /* animation:google.maps.Animation.BOUNCE, */
           map: map,
           title: marker.markerName,
