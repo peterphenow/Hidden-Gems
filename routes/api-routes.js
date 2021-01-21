@@ -1,6 +1,11 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+/* passportFacebook = require("../config/fb"),
+FacebookStrategy = require("passport-facebook").Strategy; */
+
+/* const passportFacebook = require("../config/fb"),
+  ; */
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -51,11 +56,24 @@ module.exports = function(app) {
     }
   });
 
+  // sends user to the facebook login screen to authenticate the user
+  app.get("/auth/facebook", passport.authenticate("facebook"));
+
+  // the callback response after authentication completes from facebook
+  app.get(
+    "/auth/facebook/callback",
+    passport.authenticate("facebook", {
+      successRedirect: "/members",
+      failureRedirect: "/login"
+    })
+  );
+
   app.get("/api/showmarkers", (req, res) => {
     db.Marker.findAll({}).then(markers => {
       res.json(markers);
     });
   });
+
   app.post("/api/addmarker", (req, res) => {
     db.Marker.create({
       markerName: req.body.markerName,

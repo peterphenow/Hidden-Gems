@@ -17,12 +17,12 @@ Our project, **Hidden Gems**, is a Google Maps API-powered application, utilizin
 **These were the project's posted minimum requrements**:
 
 - [x] Must use a Node and Express server
-- [] Must use Handlebars.js as the template engine
+- [x] Must use Handlebars.js as the template engine
 - [x] Must be backed by a MySQL database with a Sequelize ORM
 - [x] Must utilize both GET and POST routes for retrieving and adding new data
 - [x] Must be deployed using Heroku (with data)
-- [] Must utilize at least one new library, package, or technology that we haven’t discussed
-- [] Must have a polished front end/UI
+- [x] Must utilize at least one new library, package, or technology that we haven’t discussed
+- [x] Must have a polished front end/UI
 - [x] Must have a folder structure that meets the MVC paradigm
 - [x] Must meet good quality coding standards (indentation, scoping, naming)
 - [x] ** Must protect API keys in Node with environment variables
@@ -51,9 +51,12 @@ While reviewing and demonstrating our learned knowledge thus far is a priority o
 * Geo-locating the user's location upon map loading.
 * Integrated custom picture upload system utilizing **multer**, but ultimately pulled from the final version due to lack of write capabilities to the default Heroku file system.
 * Integrated Handlebars.js into our **M**odels-**V**iew-**C**ontroller paradigm. 
+* Integrated colorful gem icons to use as custom map markers.
+* Integrated "Login with Facebook" authentication functionality to login screen using **OAuth 1.0a** API.
 * 
 * to be continued...
 * 
+
 
 
 *After multiple trial and error debugging sessions, all applied logic appears sound and no bugs can be generated from purposeful negligent entries.  From this point, it was time to clean up:*
@@ -83,7 +86,6 @@ Installation should be fairly straightforward, but here's a quick guide to get u
 This project is deployed on the world wide intertubes via **Heroku** at:
 
 https://ancient-waters-90063.herokuapp.com/
-
 
 
 # Screenshots of Deployed Website
