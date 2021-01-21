@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const passport_fb = require("../config/fb"),FacebookStrategy = require("passport-facebook").Strategy;
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -10,7 +11,7 @@ module.exports = function(app) {
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       email: req.user.email,
-      id: req.user.id
+      id: req.user.id,
     });
   });
 
@@ -20,12 +21,12 @@ module.exports = function(app) {
   app.post("/api/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
     })
       .then(() => {
         res.redirect(307, "/api/login");
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(401).json(err);
       });
   });
@@ -46,13 +47,22 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
       });
     }
   });
+  app.get("/auth/facebook", passport.authenticate("facebook"));
+
+  app.get(
+    "/auth/facebook/callback",
+    passport.authenticate("facebook", {
+      successRedirect: "/members",
+      failureRedirect: "/login",
+    })
+  );
 
   app.get("/api/showmarkers", (req, res) => {
-    db.Marker.findAll({}).then(markers => {
+    db.Marker.findAll({}).then((markers) => {
       res.json(markers);
     });
   });
@@ -61,7 +71,7 @@ module.exports = function(app) {
       markerName: req.body.markerName,
       markerLatitude: req.body.markerLatitude,
       markerLongitude: req.body.markerLongitude,
-      markerInfo: req.body.markerInfo
+      markerInfo: req.body.markerInfo,
     })
       .then(() => {
         console.log("marker successfully created.");
@@ -95,7 +105,7 @@ module.exports = function(app) {
           console.log("no picture file found!");
         } */
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(401).json(err);
       });
   });
