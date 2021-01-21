@@ -98,6 +98,9 @@ $(document).ready(() => {
       markerData.markerInfo
     );
 
+    // refresh map so data appears when clicking the new marker
+    location.reload();
+
     /* emailInput.val("");
     passwordInput.val(""); */
   });
@@ -113,6 +116,7 @@ $(document).ready(() => {
         };
         const newMarker = new google.maps.Marker({
           position: myLatLng,
+          icon: "./../images/gem-solid.png",
           /* animation:google.maps.Animation.BOUNCE, */
           map: map,
           title: marker.markerName,
