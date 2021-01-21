@@ -5,6 +5,7 @@ const db = require("../models");
 passport.use(
   new FacebookStrategy(
     {
+      // we need to move these to environment variables
       clientID: "411866476566106",
       clientSecret: "f4a590e702fd960148f7eb3aa022bd8c",
       callbackURL: "http://localhost:8080/auth/facebook/callback"

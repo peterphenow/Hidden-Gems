@@ -1,8 +1,11 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
-/* const passport_fb = require("../config/fb"),
-  FacebookStrategy = require("passport-facebook").Strategy; */
+/* passportFacebook = require("../config/fb"),
+FacebookStrategy = require("passport-facebook").Strategy; */
+
+/* const passportFacebook = require("../config/fb"),
+  ; */
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
