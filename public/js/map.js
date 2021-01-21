@@ -98,6 +98,9 @@ $(document).ready(() => {
       markerData.markerInfo
     );
 
+    // refresh map so data appears when clicking the new marker
+    location.reload();
+
     /* emailInput.val("");
     passwordInput.val(""); */
   });
