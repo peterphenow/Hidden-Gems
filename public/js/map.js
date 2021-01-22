@@ -116,6 +116,7 @@ $(document).ready(() => {
         };
         const newMarker = new google.maps.Marker({
           position: myLatLng,
+          id: marker.id,
           icon: "./../images/gem-solid.png",
           /* animation:google.maps.Animation.BOUNCE, */
           map: map,
@@ -132,6 +133,7 @@ $(document).ready(() => {
           const markerInfoStuff = `
           
             <h2>Marker Info<h2>
+            <h3>Marker ID: <span id="marker-id">${newMarker.id}</span></h3>
             <h3>Marker Name: ${newMarker.title}</h3>
             <h3>Marker Location: Lat:${newMarker.customInfo[0].lat} Lng: ${newMarker.customInfo[0].lng}</h3>
             <h3>Marker Created at: </h3>
