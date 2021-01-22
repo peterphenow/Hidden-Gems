@@ -136,8 +136,7 @@ $(document).ready(() => {
             <h3>Marker Location: Lat:${newMarker.customInfo[0].lat} Lng: ${newMarker.customInfo[0].lng}</h3>
             <h3>Marker Created at: </h3>
             <h3>Marker Information: ${newMarker.customInfo[1]}</h3>
-            <img src="./${marker.markerPics}" width="500" height="600">
-          
+                  
         
           `;
 
