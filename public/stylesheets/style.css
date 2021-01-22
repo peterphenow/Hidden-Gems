@@ -1,5 +1,6 @@
 body {
   font-family: 'Anton', sans-serif;
+  background-image: url("img/background.jpg");
 }
 
 form.signup, form.login {
@@ -20,13 +21,13 @@ form.signup, form.login {
   height: 75%;
   width: 25%;
   border: 2px solid #000;
-  background-image: url("img/backgroundImage.jpg");
+  background-image: url("img/background.jpg");
   border-radius: 5px;
   color: silver !important;
 }
 
 #bottom-bar {
-  background-color: cornflowerblue;
+  background-color: black;
   width: 100%;
 }
 
@@ -36,10 +37,23 @@ form.signup, form.login {
 }
 
 #splash-title {
-  font-size: 75px;
+  font-size: 80px;
+  color: white;
   text-align: center;
-  color: silver;
-}
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+  }
+  
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px rgb(58, 57, 57), 0 0 20px rgb(58, 57, 57), 0 0 30px #494749, 0 0 40px #494749, 0 0 50px #494749, 0 0 60px #494749, 0 0 70px #494749;
+    }
+    to {
+      text-shadow: 0 0 20px rgb(58, 57, 57), 0 0 30px #747172, 0 0 40px #747172, 0 0 50px #747172, 0 0 60px #747172, 0 0 70px #747172, 0 0 80px #747172;
+    }
+  }
+  
 
 
 html,
@@ -96,23 +110,23 @@ h4, h3, h2 {
 
 .popup .popuptext {
   visibility: hidden;
-  background-color: grey;
+  background-image: url("img/background.jpg");
   color: #fff;
   text-align: center;
   padding-left: 10px;
-  padding-top: 10px;
-  position: absolute;
+  padding: 10px;
+  position: sticky;
   z-index: 1;
   border: 4px solid black;
   border-radius: 10px;
-  left: 500px;
 }
 
 #myPopup {
   width: 500px;
-  height: 500px;
+  height: 200px;
   color: white;
   z-index: 1;
+  font-size: large;
 }
 
 /* Popup arrow */
@@ -136,7 +150,7 @@ h4, h3, h2 {
 
 /* Popup Close button */
 .close {
-  color: rgba(19, 18, 18, 0.897);
+  color: white;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -146,7 +160,7 @@ h4, h3, h2 {
 
 .close:hover,
 .close:focus {
-  color: #000;
+  color: white;
   text-decoration: none;
   cursor: pointer;
 }
@@ -178,7 +192,8 @@ h4, h3, h2 {
 }
 
 .navbar, .navbar-default{
-  background-image: url("img/backgroundImage.jpg")
+  background-image: url("img/background.jpg")
+  
 }
 
 
