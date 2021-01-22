@@ -45,6 +45,7 @@ form.signup, form.login {
 
 html,
 body {
+  display: flex;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -56,6 +57,7 @@ body {
 }
 
 div[class^="d"] {
+  display: flex;
   background-color: #e2e2e2;
   padding: 1rem;
   margin: 1rem;
@@ -195,8 +197,8 @@ p {
 }
 
 .navbar, .navbar-default{
+  display: flex;
   background-image: url("img/background.jpg")
-  
 }
 
 
