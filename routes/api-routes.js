@@ -118,6 +118,16 @@ module.exports = function(app) {
       });
   });
 
+  app.delete("/api/deleteMarker/:id", (req, res) => {
+    db.Marker.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(dbMarker => {
+      res.json(dbMarker);
+    });
+  });
+
   /* function getNewFileName(id) {
     // select 8 characters at random from an array
     const finalArray = [];
