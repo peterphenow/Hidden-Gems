@@ -30,4 +30,15 @@ $(document).ready(() => {
       }
     });
   });
+
+  $("#delete-btn").click(() => {
+    const id = $("#marker-id").text();
+    console.log("id " + id);
+    $.ajax({
+      url: `/api/deleteMarker/${id}`,
+      type: "DELETE",
+      data: id
+    });
+    location.reload();
+  });
 });
