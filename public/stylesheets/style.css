@@ -106,7 +106,7 @@ p {
 .popup {
   font-family: 'Courier New', Courier, monospace;
   position: absolute;
-  display: inline-block;
+  /* display: inline-block; */
   cursor: pointer;
 }
 
