@@ -2,6 +2,10 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 FacebookStrategy = require("passport-facebook").Strategy;
 const db = require("../models");
+const env = process.env.NODE_ENV || "development";
+const config = require(__dirname + "/../config/config.json")[env];
+let callbackUrl;
+require("dotenv").config();
 
 // Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
 passport.use(
@@ -36,26 +40,39 @@ passport.use(
   )
 );
 
+// defining out facebook stragey callback url.  if we're connected to
+// jaws DB then we know we're using Heroku, so we're gonna use the heroku callback
+// if we're not using JawsDB then we know we're on our local machine, so the
+// callback URL will be your local host.  im sure there's an easier way to do this
+// but this should be a quick patch
+
+if (config.use_env_variable) {
+  callbackUrl =
+    "https://ancient-waters-90063.herokuapp.com/auth/facebook/callback";
+} else {
+  callbackUrl = "http://localhost:8080/auth/facebook/callback";
+}
+
 passport.use(
   new FacebookStrategy(
     {
       // we need to move these to environment variables
-      clientID: "411866476566106",
-      clientSecret: "f4a590e702fd960148f7eb3aa022bd8c",
-      callbackURL: "http://localhost:8080/auth/facebook/callback"
+      clientID: process.env.FB_CLIENT_ID,
+      clientSecret: process.env.FB_CLIENT_SECRET,
+      callbackURL: callbackUrl
     },
     (accessToken, refreshToken, profile, done) => {
       db.User.findOrCreate({
         where: { email: profile.id + "@facebook.com" },
         defaults: { password: profile.id + "@facebook.com" }
       }).spread((user, created) => {
-        console.log("profile returned by fb: " + profile);
+        console.log("profile returned by fb: " + JSON.stringify(profile));
         console.log(
           user.get({
             plain: true
           })
         );
-        console.log("profile returned by fb: " + profile);
+        console.log("profile returned by fb: " + JSON.stringify(profile));
         console.log(created);
 
         done(null, user);

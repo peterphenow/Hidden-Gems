@@ -4,10 +4,12 @@
     <link rel="shortcut icon" href="images/gem-solid.png" type="image/png">
     <title>Hidden Gems</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css" />
     <link href="stylesheets/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">  
   </head>
 
   <body>
@@ -26,7 +28,7 @@
         </div>
       </div>
       <div id="member-name-div">
-        <h4>Welcome <span class="member-name"></span></h4>
+        <h3>Welcome<span class="member-name"></span></h3>
       </div>
     </nav>
     <div class="container">
@@ -49,38 +51,21 @@
             <div class="col-12 col-md-8 col-lg-8 col-xl-6">
               <div class="row align-items-center">
                 <div class="col mt-4">
-                  <input type="text" class="form-control" placeholder="Marker Name" id="marker-name" />
+                  <input type="text" class="form-control" placeholder="Name Your Gem" id="marker-name" />
                 </div>
               </div>
               <div class="row align-items-center mt-4">
-                <div class="col">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Marker Location"
-                    id="marker-location"
-                  />
-                </div>
-              </div>
-              <div class="row align-items-center mt-4">
-                <div class="col">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Created At"
-                    id="marker-created"
-                  />
-                </div>
+                
                 <div class="col">
                   <input
                     type="textarea"
                     class="form-control"
-                    placeholder="Information"
+                    placeholder="Tell Me About This Hidden Gem!"
                     id="marker-info"
                   />
                 </div>
-              </div>
-              <div class="row justify-content-start mt-4">
+              </div><br>
+              <div class="row justify-content-right mt-4">
                 <div class="col">
                   <button id="subby" class="btn btn-primary mt-4">
                     Submit
@@ -118,12 +103,12 @@
     </div>
     <div id="map"></div>
     <div id="infoBox">
-      <h2>Marker Info</h2>
-
-      <h3>Marker Name:</h3>
-      <h3>Marker Location:</h3>
-      <h3>Marker Created at:</h3>
-      <h3>Marker Information:</h3>
+      <h2>Hidden Gem Information:</h2>
+      <br><br>
+      <h3>Hidden Gem: </h3><br>
+      <h3>Gem Location: </h3><br>
+      <h3>Gem Created At: </h3><br>
+      <h3>Gem Information: </h3><br>
     </div>
     <button id="delete-btn" class="btn btn-danger">DELETE MARKER</button>
 
