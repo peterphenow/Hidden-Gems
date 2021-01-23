@@ -124,7 +124,7 @@ $(document).ready(() => {
 
       document.querySelector("#infoBox").innerHTML = markerInfoStuff;
     });
-
+    location.reload();
     // refresh map so data appears when clicking the new marker
     /* location.reload(); */
 
@@ -158,6 +158,7 @@ $(document).ready(() => {
   </div>
   <h1 id="firstHeading" class="firstHeading">${newMarker.title}</h1>
   <div id="bodyContent">
+  <h4>Gem ID: <span id="marker-id">${newMarker.id}</span>
   <p><b>${newMarker.title}</b>, ${newMarker.customInfo[1]}</p>
   <p>Location: ${newMarker.customInfo[0].lat.toFixed(
     2
