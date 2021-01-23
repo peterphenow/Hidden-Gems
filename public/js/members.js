@@ -41,4 +41,7 @@ $(document).ready(() => {
     });
     location.reload();
   });
+  $("#all-markers").click(() => {
+    window.location.href = "/all-markers";
+  });
 });
