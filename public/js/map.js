@@ -4,6 +4,7 @@ $(document).ready(() => {
   let newMarkerLongitude;
   let finalLatitude = 44.9778;
   let finalLongitude = -93.265;
+  let prev_infowindow = false;
 
   getLocation();
 
@@ -58,7 +59,7 @@ $(document).ready(() => {
     console.log({ newMarkerLatitude }, { newMarkerLongitude });
 
     newMarker.addListener("click", () => {
-      map.setZoom(15);
+      infowindow.open(map, marker);
       map.setCenter(newMarker.getPosition());
       console.log(newMarker.title);
       console.log(newMarker.customInfo);
@@ -124,7 +125,35 @@ $(document).ready(() => {
           customInfo: [myLatLng, marker.markerInfo]
         });
         newMarker.addListener("click", () => {
-          map.setZoom(15);
+          const contentString = `
+
+  <div id="content">
+  <div id="siteNotice">
+  </div>
+  <h1 id="firstHeading" class="firstHeading">${newMarker.title}</h1>
+  <div id="bodyContent">
+  <p><b>${newMarker.title}</b>, ${newMarker.customInfo[1]}</p>
+  <p>Location: ${newMarker.customInfo[0].lat.toFixed(
+    2
+  )}, ${newMarker.customInfo[0].lng.toFixed(2)} </p>
+  </div> 
+  </div>
+
+
+
+  
+  
+  `;
+
+          const infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+          if (prev_infowindow) {
+            prev_infowindow.close();
+          }
+
+          prev_infowindow = infowindow;
+          infowindow.open(map, newMarker);
           map.setCenter(newMarker.getPosition());
           console.log(newMarker.title);
           console.log(newMarker.customInfo);
@@ -135,7 +164,9 @@ $(document).ready(() => {
             <h2>Gem Info<h2>
             <h3>Gem ID: <span id="marker-id">${newMarker.id}</span></h3>
             <h3>Gem Name: ${newMarker.title}</h3>
-            <h3>Gem Location: Lat:${newMarker.customInfo[0].lat} Lng: ${newMarker.customInfo[0].lng}</h3>
+            <h3>Gem Location: Lat:${newMarker.customInfo[0].lat.toFixed(
+    2
+  )} Lng: ${newMarker.customInfo[0].lng.toFixed()}</h3>
             <h3>Gem Created at: </h3>
             <h3>Gem Information: ${newMarker.customInfo[1]}</h3>
                   
