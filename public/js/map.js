@@ -116,7 +116,6 @@ $(document).ready(() => {
         <h2>Gem Info<h2>
         <h3>Gem Name: ${markerData.markerName}</h3>
         <h3>Gem Location: Lat:${markerData.markerLatitude} Lng: ${markerData.markerLongitude}</h3>
-        <h3>Gem Created at: </h3>
         <h3>Gem Information: ${markerData.markerInfo}</h3>
               
     
@@ -144,7 +143,7 @@ $(document).ready(() => {
         const newMarker = new google.maps.Marker({
           position: myLatLng,
           id: marker.id,
-          icon: "./../images/gem-solid.png",
+          icon: randomGem(),
           /* animation:google.maps.Animation.BOUNCE, */
           map: map,
           title: marker.markerName,
@@ -192,7 +191,6 @@ $(document).ready(() => {
             <h3>Gem ID: <span id="marker-id">${newMarker.id}</span></h3>
             <h3>Gem Name: ${newMarker.title}</h3>
             <h3>Gem Location: Lat:${newMarker.customInfo[0].lat} Lng: ${newMarker.customInfo[0].lng.toFixed()}</h3>
-            <h3>Gem Created at: </h3>
             <h3>Gem Information: ${newMarker.customInfo[1]}</h3>
                   
         
@@ -226,6 +224,23 @@ $(document).ready(() => {
 
   // display new marker information
 });
+function randomGem() {
+  const img = [
+    "blue-gem.png",
+    "brown-gem.png",
+    "gem-solid.png",
+    "green-gem.png",
+    "grey-gem.png",
+    "orange-gem.png",
+    "pink-gem.png",
+    "purple-gem.png",
+    "red-gem.png"
+  ];
+  const num = Math.floor(Math.random() * img.length);
+  const gem = img[num];
+  const gemStr = "./../images/" + gem;
+  return gemStr;
+}
 
 // closes the popup window
 $("#close").on("click", () => {
