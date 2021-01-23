@@ -1,6 +1,8 @@
 body {
   font-family: 'Alegreya', serif;
-  background-image: url("img/background.jpg");
+  background-image: url("img/background2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 form.signup, form.login {
@@ -21,9 +23,11 @@ form.signup, form.login {
   height: 75%;
   width: 25%;
   border: 2px solid #000;
-  background-image: url("img/background.jpg");
+  background-image: url("img/background2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   border-radius: 5px;
-  color: silver !important;
+  color: white !important;
 }
 
 #bottom-bar {
@@ -39,7 +43,7 @@ form.signup, form.login {
 #splash-title {
   font-size: 75px;
   text-align: center;
-  color: rgba(192, 192, 192, 0.527); 
+  color: white; 
 }
 
 
@@ -62,7 +66,7 @@ div[class^="d"] {
 }
 
 h4, h3, h2 {
-  color: silver;
+  color: white;
 }
 
 #member-name-div {
@@ -72,22 +76,22 @@ h4, h3, h2 {
 }
 
 .login {
-  color: silver;
+  color: white;
   font-size: large;
 }
 
 .signup {
-  color: silver;
+  color: white;
   font-size: large;
 }
 
 p {
-  color: silver;
+  color: white;
   font-size: large;
 }
 
 .member-name {
-  color: silver;
+  color: white;
   padding: 10px;
   border-radius: 5px;
 }
@@ -112,7 +116,9 @@ p {
 
 .popup .popuptext {
   visibility: hidden;
-  background-image: url("img/background.jpg");
+  background-image: url("img/background2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #fff;
   text-align: center;
   padding-left: 10px;
@@ -195,7 +201,9 @@ p {
 }
 
 .navbar, .navbar-default{
-  background-image: url("img/background.jpg")
+  background-image: url("img/background2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
