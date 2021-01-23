@@ -132,12 +132,12 @@ $(document).ready(() => {
 
           const markerInfoStuff = `
           
-            <h2>Marker Info<h2>
-            <h3>Marker ID: <span id="marker-id">${newMarker.id}</span></h3>
-            <h3>Marker Name: ${newMarker.title}</h3>
-            <h3>Marker Location: Lat:${newMarker.customInfo[0].lat} Lng: ${newMarker.customInfo[0].lng}</h3>
-            <h3>Marker Created at: </h3>
-            <h3>Marker Information: ${newMarker.customInfo[1]}</h3>
+            <h2>Gem Info<h2>
+            <h3>Gem ID: <span id="marker-id">${newMarker.id}</span></h3>
+            <h3>Gem Name: ${newMarker.title}</h3>
+            <h3>Gem Location: Lat:${newMarker.customInfo[0].lat} Lng: ${newMarker.customInfo[0].lng}</h3>
+            <h3>Gem Created at: </h3>
+            <h3>Gem Information: ${newMarker.customInfo[1]}</h3>
                   
         
           `;
