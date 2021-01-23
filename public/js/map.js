@@ -4,7 +4,7 @@ $(document).ready(() => {
   let newMarkerLongitude;
   let finalLatitude = 44.9778;
   let finalLongitude = -93.265;
-  let prev_infowindow = false;
+  let prevInfoWindow = false;
 
   getLocation();
 
@@ -83,7 +83,7 @@ $(document).ready(() => {
       title: $("#marker-name").val(),
       customInfo: [event.latLng, $("#marker-info").val()]
     });
-    console.log('-----------------------new marker addeD');
+    console.log("-----------------------new marker addeD");
 
     newMarker.addListener("click", () => {
       const contentString = `
@@ -100,11 +100,11 @@ $(document).ready(() => {
       const infowindow = new google.maps.InfoWindow({
         content: contentString
       });
-      if (prev_infowindow) {
-        prev_infowindow.close();
+      if (prevInfoWindow) {
+        prevInfoWindow.close();
       }
 
-      prev_infowindow = infowindow;
+      prevInfoWindow = infowindow;
       infowindow.open(map, newMarker);
       map.setCenter(newMarker.getPosition());
       console.log(newMarker.title);
@@ -174,32 +174,30 @@ $(document).ready(() => {
           const infowindow = new google.maps.InfoWindow({
             content: contentString
           });
-          if (prev_infowindow) {
-            prev_infowindow.close();
+          if (prevInfoWindow) {
+            prevInfoWindow.close();
           }
 
-          prev_infowindow = infowindow;
+          prevInfoWindow = infowindow;
           infowindow.open(map, newMarker);
           map.setCenter(newMarker.getPosition());
           console.log(newMarker.title);
           console.log(newMarker.customInfo);
           console.log(newMarker);
 
-          const markerInfoStuff = `
+          /*  const markerInfoStuff = `
           
             <h2>Gem Info<h2>
             <h3>Gem ID: <span id="marker-id">${newMarker.id}</span></h3>
             <h3>Gem Name: ${newMarker.title}</h3>
-            <h3>Gem Location: Lat:${newMarker.customInfo[0].lat.toFixed(
-              2
-            )} Lng: ${newMarker.customInfo[0].lng.toFixed()}</h3>
+            <h3>Gem Location: Lat:${newMarker.customInfo[0].lat} Lng: ${newMarker.customInfo[0].lng.toFixed()}</h3>
             <h3>Gem Created at: </h3>
             <h3>Gem Information: ${newMarker.customInfo[1]}</h3>
                   
         
-          `;
+          `; */
 
-          document.querySelector("#infoBox").innerHTML = markerInfoStuff;
+          document.querySelector("#infoBox").innerHTML = contentString;
         });
       });
     });
