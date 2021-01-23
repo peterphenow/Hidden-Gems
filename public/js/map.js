@@ -47,36 +47,9 @@ $(document).ready(() => {
   function placeMarker(map, location) {
     const popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
-    const newMarker = new google.maps.Marker({
-      position: location,
-      icon: "./../images/gem-solid.png",
-      /* animation:google.maps.Animation.BOUNCE, */
-      map: map
-    });
     newMarkerLatitude = location.lat();
 
     newMarkerLongitude = location.lng();
-    console.log({ newMarkerLatitude }, { newMarkerLongitude });
-
-    newMarker.addListener("click", () => {
-      infowindow.open(map, marker);
-      map.setCenter(newMarker.getPosition());
-      console.log(newMarker.title);
-      console.log(newMarker.customInfo);
-
-      const markerInfoStuff = `
-        
-          <h2>Marker Info<h2>
-          <h3>Marker Name: ${newMarker.title}</h3>
-          <h3>Marker Location: Lat:${newMarker.customInfo[0].lat} Lng: ${newMarker.customInfo[0].lng}</h3>
-          <h3>Marker Created at: </h3>
-          <h3>Marker Information: ${newMarker.customInfo[1]}</h3>
-        
-      
-        `;
-
-      document.querySelector("#infoBox").innerHTML = markerInfoStuff;
-    });
   }
 
   $("#subby").on("click", () => {
@@ -98,9 +71,62 @@ $(document).ready(() => {
       markerData.markerLongitude,
       markerData.markerInfo
     );
+    const myLatLng = {
+      lat: parseFloat(markerData.markerLatitude),
+      lng: parseFloat(markerData.markerLongitude)
+    };
+    const newMarker = new google.maps.Marker({
+      icon: "./../images/gem-solid.png",
+      position: myLatLng,
+      /* animation:google.maps.Animation.BOUNCE, */
+      map: map,
+      title: $("#marker-name").val(),
+      customInfo: [event.latLng, $("#marker-info").val()]
+    });
+    console.log('-----------------------new marker addeD');
+
+    newMarker.addListener("click", () => {
+      const contentString = `
+      <div id="content">
+      <div id="siteNotice">
+      </div>
+      <h1 id="firstHeading" class="firstHeading">${markerData.markerName}</h1>
+      <div id="bodyContent">
+      <p><b>${markerData.markerName}</b>, ${markerData.markerInfo}</p>
+      <p>Location: ${markerData.markerLatitude}, ${markerData.markerLongitude} </p>
+      </div> 
+      </div>`;
+
+      const infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+      if (prev_infowindow) {
+        prev_infowindow.close();
+      }
+
+      prev_infowindow = infowindow;
+      infowindow.open(map, newMarker);
+      map.setCenter(newMarker.getPosition());
+      console.log(newMarker.title);
+      console.log(newMarker.customInfo);
+      console.log(newMarker);
+
+      const markerInfoStuff = `
+      
+        <h2>Gem Info<h2>
+        <h3>Gem Name: ${markerData.markerName}</h3>
+        <h3>Gem Location: Lat:${markerData.markerLatitude} Lng: ${markerData.markerLongitude}</h3>
+        <h3>Gem Created at: </h3>
+        <h3>Gem Information: ${markerData.markerInfo}</h3>
+              
+    
+      `;
+
+      document.querySelector("#infoBox").innerHTML = markerInfoStuff;
+    });
 
     // refresh map so data appears when clicking the new marker
-    location.reload();
+    /* location.reload(); */
 
     /* emailInput.val("");
     passwordInput.val(""); */
@@ -165,8 +191,8 @@ $(document).ready(() => {
             <h3>Gem ID: <span id="marker-id">${newMarker.id}</span></h3>
             <h3>Gem Name: ${newMarker.title}</h3>
             <h3>Gem Location: Lat:${newMarker.customInfo[0].lat.toFixed(
-    2
-  )} Lng: ${newMarker.customInfo[0].lng.toFixed()}</h3>
+              2
+            )} Lng: ${newMarker.customInfo[0].lng.toFixed()}</h3>
             <h3>Gem Created at: </h3>
             <h3>Gem Information: ${newMarker.customInfo[1]}</h3>
                   
