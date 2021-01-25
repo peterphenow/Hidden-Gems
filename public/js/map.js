@@ -155,11 +155,14 @@ $(document).ready(() => {
   <div id="content">
   <div id="siteNotice">
   </div>
-  <h1 id="firstHeading" class="firstHeading">${newMarker.title}</h1>
+  <h1 id="firstHeading" class="firstHeading" style="color: silver;">
+  ${newMarker.title}
+  </h1>
   <div id="bodyContent">
-  <h4>Gem ID: <span id="marker-id">${newMarker.id}</span>
-  <p><b>${newMarker.title}</b>, ${newMarker.customInfo[1]}</p>
-  <p>Location: ${newMarker.customInfo[0].lat.toFixed(
+  <h4 style="color: silver;">Gem ID: <span id="marker-id">${newMarker.id}</span>
+  <p style="color: silver;">
+  <b>${newMarker.title}</b>, ${newMarker.customInfo[1]}</p>
+  <p style="color: silver;">Location: ${newMarker.customInfo[0].lat.toFixed(
     2
   )}, ${newMarker.customInfo[0].lng.toFixed(2)} </p>
   </div> 

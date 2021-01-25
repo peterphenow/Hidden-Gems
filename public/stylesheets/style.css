@@ -12,6 +12,14 @@ form.signup, form.login {
   margin-right: auto;
 }
 
+#firstHeading {
+  color: white;
+}
+
+/* #bodyContent {
+  color: black !important;
+} */
+
 #map {
   height: 75%;
   width: 75%;
