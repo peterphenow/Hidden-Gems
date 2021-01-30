@@ -4,7 +4,11 @@
 ## "Hidden Gems" - Google Maps & Sequelize Demonstration
 <br/>
 
-![example gif](/example/example.gif)
+### Facebook OAuth 
+![example gif](example/fb_oath_example.gif)
+
+### Google Maps API 
+![example gif](example/newmarker_example.gif)
 
 
 ### Overview
@@ -17,7 +21,6 @@ Our project, **Hidden Gems**, is a Google Maps API-powered application, utilizin
 **These were the project's posted minimum requrements**:
 
 - [x] Must use a Node and Express server
-- [x] Must use Handlebars.js as the template engine
 - [x] Must be backed by a MySQL database with a Sequelize ORM
 - [x] Must utilize both GET and POST routes for retrieving and adding new data
 - [x] Must be deployed using Heroku (with data)
@@ -25,9 +28,7 @@ Our project, **Hidden Gems**, is a Google Maps API-powered application, utilizin
 - [x] Must have a polished front end/UI
 - [x] Must have a folder structure that meets the MVC paradigm
 - [x] Must meet good quality coding standards (indentation, scoping, naming)
-- [x] ** Must protect API keys in Node with environment variables
-
-** *With approval of our class instructor Charlie, we are unable to hide our API keys due to limitations in the interaction with Google Maps.  When we include our Google Maps module via an HTML script block, we are required to give our API key, but there is no way to hide that information with an environment variable.*
+- [x] Must protect API keys in Node with environment variables
 
 
 ### Review of Tasks
@@ -52,12 +53,8 @@ While reviewing and demonstrating our learned knowledge thus far is a priority o
 * Integrated custom picture upload system utilizing **multer**, but ultimately pulled from the final version due to lack of write capabilities to the default Heroku file system.
 * Integrated Handlebars.js into our **M**odels-**V**iew-**C**ontroller paradigm. 
 * Integrated colorful gem icons to use as custom map markers.
-* Integrated "Login with Facebook" authentication functionality to login screen using **OAuth 1.0a** API.
-* 
-* to be continued...
-* 
-
-
+* Integrated "Login with Facebook" authentication functionality to login screen using **OAuth 1.0a**.
+* Added ability for any user to delete a marker from the map/database.
 
 *After multiple trial and error debugging sessions, all applied logic appears sound and no bugs can be generated from purposeful negligent entries.  From this point, it was time to clean up:*
 
@@ -88,19 +85,11 @@ This project is deployed on the world wide intertubes via **Heroku** at:
 https://ancient-waters-90063.herokuapp.com/
 
 
-# Screenshots of Deployed Website
-
-![screenshot 992px width](/img/ss1.PNG)
-![screenshot 992px width](/img/ss2.PNG)
-![screenshot 992px width](/img/ss3.PNG)
-![screenshot 768px width](/img/ss4.PNG)
-![screenshot 768px width](/img/ss5.PNG)
-
 ### License
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-Copyright 2020 Team P.H.A.T.E., distrubuted under the **GNU Public License** for the Univeristy of Minnesota Part-Time Full Stack Coding Boot Camp.
+Copyright 2020 **Team P.H.A.T.E.**, distrubuted under the **GNU Public License** for the Univeristy of Minnesota Part-Time Full Stack Coding Boot Camp.
 
 
 
