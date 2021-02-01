@@ -38,4 +38,3 @@ db.sequelize.sync({ force: true }).then(() => {
     );
   });
 });
-//testing Travis CI
