@@ -1,6 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-// FacebookStrategy = require("passport-facebook").Strategy;
+FacebookStrategy = require("passport-facebook").Strategy;
 const db = require("../models");
 const env = process.env.NODE_ENV || "development";
 const config = require(__dirname + "/../config/config.json")[env];
